@@ -65,6 +65,7 @@ class LoadPosts extends Component {
                     posts={posts}
                     onRefresh={this._handleRefreshClick}
                     isFetching={isFetching}
+                    {...this.props}
                 />
             </View>
         )

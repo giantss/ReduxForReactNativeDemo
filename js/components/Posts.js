@@ -7,10 +7,16 @@ import PropTypes from 'prop-types'
 import {
     FlatList,
     Text,
-    View
+    View,
+    TouchableOpacity
 } from 'react-native'
 
 export default class Posts extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     static propTypes = {
         posts: PropTypes.array.isRequired
     };
@@ -19,18 +25,24 @@ export default class Posts extends Component {
         let dataItem = data.item;
         let { id, title } = dataItem;
         return (
-            <View style={{
-                flexDirection: 'row',
-                width: '100%',
-                height: 50,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 10,
-                backgroundColor: '#ccc'
+            <TouchableOpacity onPress={()=>{
+                this.props.navigator.push({
+                    screen: 'ReduxForReactNativeDemo.PostsDetail',
+                    title: 'PostsDetail'
+                });
             }}>
-                <Text>{title}</Text>
-            </View>
-
+                <View style={{
+                    flexDirection: 'row',
+                    width: '100%',
+                    height: 50,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: 10,
+                    backgroundColor: '#ccc'
+                }}>
+                    <Text>{title}</Text>
+                </View>
+            </TouchableOpacity>
         )
     };
 
